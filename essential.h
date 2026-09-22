@@ -1,13 +1,8 @@
-#ifndef ESSENTIAL_H
-#define ESSENTIAL_H
-
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
-// Patient structure
 struct Patient
 {
     int id;
@@ -17,10 +12,11 @@ struct Patient
     int priority;
 };
 
-// Global patient list
-vector<Patient> patients;
+const int MAX_PATIENTS = 100;
 
-// Functions
+Patient patients[MAX_PATIENTS];
+int patientCount = 0;
+
 bool authentication()
 {
     string userId;
@@ -46,47 +42,59 @@ bool authentication()
 
 void intake_patient()
 {
-    Patient patient;
+    if (patientCount >= MAX_PATIENTS)
+    {
+        cout << "Patient list is full." << endl;
+        return;
+    }
 
     cout << "Enter patient ID: ";
-    cin >> patient.id;
+    cin >> patients[patientCount].id;
 
     cout << "Enter patient name: ";
-    cin >> patient.name;
+    cin >> patients[patientCount].name;
 
     cout << "Enter patient age: ";
-    cin >> patient.age;
+    cin >> patients[patientCount].age;
 
     cout << "Enter disease: ";
-    cin >> patient.disease;
+    cin >> patients[patientCount].disease;
 
-    cout << "Enter priority (1 = Emergency, 2 = Normal): ";
-    cin >> patient.priority;
+    cout << "Enter priority:" << endl;
+    cout << "1 = Emergency" << endl;
+    cout << "2 = Serious" << endl;
+    cout << "3 = Normal" << endl;
+    cout << "Enter priority: ";
+    cin >> patients[patientCount].priority;
 
-    patients.push_back(patient);
+    patientCount++;
 
     cout << "Patient added successfully." << endl;
 }
 
 void waiting_list()
 {
-    if (patients.empty())
+    if (patientCount == 0)
     {
         cout << "No patients in waiting list." << endl;
         return;
     }
 
     cout << "\n--- WAITING LIST ---" << endl;
-    
-    for (int i = 0; i < patients.size(); i++)
+
+    for (int priority = 1; priority <= 3; priority++)
     {
-        cout << "ID: " << patients[i].id << endl;
-        cout << "Name: " << patients[i].name << endl;
-        cout << "Age: " << patients[i].age << endl;
-        cout << "Disease: " << patients[i].disease << endl;
-        cout << "Priority: " << patients[i].priority << endl;
-        cout << "--------------------" << endl;
+        for (int i = 0; i < patientCount; i++)
+        {
+            if (patients[i].priority == priority)
+            {
+                cout << "ID: " << patients[i].id << endl;
+                cout << "Name: " << patients[i].name << endl;
+                cout << "Age: " << patients[i].age << endl;
+                cout << "Disease: " << patients[i].disease << endl;
+                cout << "Priority: " << patients[i].priority << endl;
+                cout << "--------------------" << endl;
+            }
+        }
     }
 }
-
-#endif
