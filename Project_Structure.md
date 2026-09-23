@@ -23,8 +23,8 @@
 
 ## ⚙️ Core Functional Requirements
 
-- [] **User Authentication:** Restrict basic access to authorized intake staff before allowing interaction with the system.
-- [] **Patient Intake:** Register incoming patients with the following schema:
+- [ ] **User Authentication:** Restrict basic access to authorized intake staff before allowing interaction with the system.
+- [ ] **Patient Intake:** Register incoming patients with the following schema:
   - `Patient ID` (Unique Identifier)
   - `Name`
   - `Age`
