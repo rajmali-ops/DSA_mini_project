@@ -60,11 +60,14 @@
 > `main.cpp` is core file mean a entry point of this project.
 
 ### Functions:
-> This is function section in this section we decide role (who write which function), and how many functions are required.if you want to write a certain function so simply change the empty with your name. 
+> This is the function section. In this section we decide roles (who writes which function), and outline the required functions. If you want to write a certain function, simply replace the `[empty]` with your name. 
 - [`name of candidate`] `Function name`, requirement.
-- [`empty`] `authentication` --> This function is take user-id and password from user,if both are correct so dashboard is open otherwise show 'wrong password and user-id' Re-try, Also manage tier-1 (general staff) and tier-2 (admin and senior staff) users by polymorphism.
-- [`empty`] `intake_patient` --> ask patient information and add it in a priority queue (Dynamically)
-- [`empty`] `waiting_list` ---> show patient list accordingly to its priority.
-- [`empty`] `consult_patient` --> consult with current patient after 30 min this patient is despatch (remove in queue) and call next patient.
-- [`empty`] `lookup_patient` --> Check patient information with patient ID.
-- 
+- [`empty`] `authentication` --> This function takes a user-id and password from the user. If both are correct, the dashboard opens; otherwise, it shows 'wrong password and user-id, Re-try'. Also manages tier-1 (general staff) and tier-2 (admin and senior staff) access using polymorphism.
+- [`empty`] `intake_patient` --> Asks for patient information (ID, name, age, disease, priority) and dynamically adds it into a priority queue.
+- [`empty`] `waiting_list` ---> Shows the current patient list actively sorted according to their medical priority.
+- [`empty`] `consult_patient` --> Consults with the highest-priority patient. After a 30-second automated timer, this patient is dispatched (removed from the queue) and the next patient is called.
+- [`empty`] `lookup_patient` --> Checks and displays patient information instantly using their unique Patient ID.
+- [`empty`] `archive_patient` --> Saves the discharged patient's data to an external file (e.g., `.json` or `.txt`) for history persistence without cluttering the active queue.
+- [`empty`] `view_history` --> (Tier-2 Admin Only) Reads and displays the external file containing all past consultations and discharged records.
+- [`empty`] `staff_dashboard` --> The UI loop for Tier-1 users, allowing them to intake, view the waiting list, and lookup active patients.
+- [`empty`] `admin_dashboard` --> The UI loop for Tier-2 users, containing all Tier-1 features plus the ability to view the archival history.
